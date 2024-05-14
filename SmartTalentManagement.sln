@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.33026.149
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartTalentManagement", "SmartTalentManagement\SmartTalentManagement.csproj", "{E9C518CB-4A7E-431F-AB89-49430B8CC8CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9C518CB-4A7E-431F-AB89-49430B8CC8CC}.Debug|x86.ActiveCfg = Debug|x86
+		{E9C518CB-4A7E-431F-AB89-49430B8CC8CC}.Debug|x86.Build.0 = Debug|x86
+		{E9C518CB-4A7E-431F-AB89-49430B8CC8CC}.Release|x86.ActiveCfg = Release|x86
+		{E9C518CB-4A7E-431F-AB89-49430B8CC8CC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A956363-E76D-4AB3-A71E-CCCE2E478F9D}
+	EndGlobalSection
+EndGlobal

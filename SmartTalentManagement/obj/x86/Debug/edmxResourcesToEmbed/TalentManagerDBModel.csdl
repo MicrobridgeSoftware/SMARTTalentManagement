@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SMARTPayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TalentManager_WageType">
+    <Key>
+      <PropertyRef Name="WageTypeId" />
+    </Key>
+    <Property Name="WageTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WageTypeDescription" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_DutyCodeView">
+    <Key>
+      <PropertyRef Name="DutyId" />
+    </Key>
+    <Property Name="DutyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DutyDescription" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="SMARTPayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TalentManager_WageType" EntityType="Self.TalentManager_WageType" />
+    <EntitySet Name="TalentManager_DutyCodeView" EntityType="Self.TalentManager_DutyCodeView" />
+    <EntitySet Name="TalentManager_DepartmentView" EntityType="SMARTPayModel.TalentManager_DepartmentView" />
+    <EntitySet Name="TalentManager_SessionSpan" EntityType="SMARTPayModel.TalentManager_SessionSpan" />
+    <EntitySet Name="TalentManager_ProductionLine" EntityType="SMARTPayModel.TalentManager_ProductionLine" />
+    <EntitySet Name="AccessHierachies" EntityType="SMARTPayModel.AccessHierachy" />
+    <EntitySet Name="MenuOptionNodes" EntityType="SMARTPayModel.MenuOptionNode" />
+    <EntitySet Name="MenuOptions" EntityType="SMARTPayModel.MenuOption" />
+    <EntitySet Name="SystemSecurityConfigurations" EntityType="SMARTPayModel.SystemSecurityConfiguration" />
+    <EntitySet Name="SystemUserAccesses" EntityType="SMARTPayModel.SystemUserAccess" />
+    <EntitySet Name="SystemUserGroups" EntityType="SMARTPayModel.SystemUserGroup" />
+    <EntitySet Name="SystemUserGroupAccesses" EntityType="SMARTPayModel.SystemUserGroupAccess" />
+    <EntitySet Name="SystemUserPasswordHistories" EntityType="SMARTPayModel.SystemUserPasswordHistory" />
+    <EntitySet Name="SystemUsers" EntityType="SMARTPayModel.SystemUser" />
+    <EntitySet Name="SystemUserSettings" EntityType="SMARTPayModel.SystemUserSetting" />
+    <EntitySet Name="SystemMenuViews" EntityType="SMARTPayModel.SystemMenuView" />
+    <EntitySet Name="SysUserAuditViews" EntityType="SMARTPayModel.SysUserAuditView" />
+    <AssociationSet Name="FK_SystemUserGroup_AccessHierachy" Association="SMARTPayModel.FK_SystemUserGroup_AccessHierachy">
+      <End Role="AccessHierachy" EntitySet="AccessHierachies" />
+      <End Role="SystemUserGroup" EntitySet="SystemUserGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuOptionNodes_MenuOptions" Association="SMARTPayModel.FK_MenuOptionNodes_MenuOptions">
+      <End Role="MenuOption" EntitySet="MenuOptions" />
+      <End Role="MenuOptionNode" EntitySet="MenuOptionNodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemUserGroupAccess_SystemUserGroup" Association="SMARTPayModel.FK_SystemUserGroupAccess_SystemUserGroup">
+      <End Role="SystemUserGroup" EntitySet="SystemUserGroups" />
+      <End Role="SystemUserGroupAccess" EntitySet="SystemUserGroupAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemUserPasswordHistory_SystemUsers" Association="SMARTPayModel.FK_SystemUserPasswordHistory_SystemUsers">
+      <End Role="SystemUser" EntitySet="SystemUsers" />
+      <End Role="SystemUserPasswordHistory" EntitySet="SystemUserPasswordHistories" />
+    </AssociationSet>
+    <EntitySet Name="TalentManager_CompanyView" EntityType="SMARTPayModel.TalentManager_CompanyView" />
+    <EntitySet Name="TalentManager_ProductionView" EntityType="SMARTPayModel.TalentManager_ProductionView" />
+    <EntitySet Name="TalentManager_Task" EntityType="SMARTPayModel.TalentManager_Task" />
+    <EntitySet Name="TalentManager_TaskView" EntityType="SMARTPayModel.TalentManager_TaskView" />
+    <EntitySet Name="TalentManager_EmployeeView" EntityType="SMARTPayModel.TalentManager_EmployeeView" />
+    <EntitySet Name="TalentManager_EmployeeContract" EntityType="SMARTPayModel.TalentManager_EmployeeContract" />
+    <EntitySet Name="TalentManager_ContractedEmployeeView" EntityType="SMARTPayModel.TalentManager_ContractedEmployeeView" />
+    <EntitySet Name="TalentManager_PaymentType" EntityType="SMARTPayModel.TalentManager_PaymentType" />
+    <EntitySet Name="TalentManager_EmployeeJobView" EntityType="SMARTPayModel.TalentManager_EmployeeJobView" />
+    <EntitySet Name="TalentManager_EmployeeDayRate" EntityType="SMARTPayModel.TalentManager_EmployeeDayRate" />
+    <EntitySet Name="TalentManager_EmployeeJob" EntityType="SMARTPayModel.TalentManager_EmployeeJob" />
+    <EntitySet Name="TalentManager_EmployeeJobDetail" EntityType="SMARTPayModel.TalentManager_EmployeeJobDetail" />
+    <AssociationSet Name="FK_TalentManager_EmployeeJobDetail_TalentManager_EmployeeJob" Association="SMARTPayModel.FK_TalentManager_EmployeeJobDetail_TalentManager_EmployeeJob">
+      <End Role="TalentManager_EmployeeJob" EntitySet="TalentManager_EmployeeJob" />
+      <End Role="TalentManager_EmployeeJobDetail" EntitySet="TalentManager_EmployeeJobDetail" />
+    </AssociationSet>
+    <EntitySet Name="TalentManager_ExportedEmployeeJob" EntityType="SMARTPayModel.TalentManager_ExportedEmployeeJob" />
+    <EntitySet Name="TalentManager_ExportedEmployeeJobDetails" EntityType="SMARTPayModel.TalentManager_ExportedEmployeeJobDetails" />
+    <AssociationSet Name="FK_TalentManager_ExportedEmployeeJobDetails_TalentManager_ExportedEmployeeJob" Association="SMARTPayModel.FK_TalentManager_ExportedEmployeeJobDetails_TalentManager_ExportedEmployeeJob">
+      <End Role="TalentManager_ExportedEmployeeJob" EntitySet="TalentManager_ExportedEmployeeJob" />
+      <End Role="TalentManager_ExportedEmployeeJobDetails" EntitySet="TalentManager_ExportedEmployeeJobDetails" />
+    </AssociationSet>
+    <EntitySet Name="TalentManager_SystemNumberConfig" EntityType="SMARTPayModel.TalentManager_SystemNumberConfig" />
+  </EntityContainer>
+  <EntityType Name="TalentManager_DepartmentView">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentDescription" Type="String" MaxLength="63" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_SessionSpan">
+    <Key>
+      <PropertyRef Name="SessionSpanId" />
+    </Key>
+    <Property Name="SessionSpanId" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="AddDayToEndTime" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_ProductionLine">
+    <Key>
+      <PropertyRef Name="ProductionLineId" />
+    </Key>
+    <Property Name="ProductionLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SessionDurationInHours" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="OvertimeApplies" Type="Boolean" Nullable="false" />
+    <Property Name="OvertimeCalculationStartHour" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" />
+    <Property Name="CostCentre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AccessHierachy">
+    <Key>
+      <PropertyRef Name="AccessHierachyId" />
+    </Key>
+    <Property Name="AccessHierachyId" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsLocationSpecific" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SystemUserGroups" Relationship="SMARTPayModel.FK_SystemUserGroup_AccessHierachy" FromRole="AccessHierachy" ToRole="SystemUserGroup" />
+  </EntityType>
+  <EntityType Name="MenuOptionNode">
+    <Key>
+      <PropertyRef Name="MenuNodesId" />
+    </Key>
+    <Property Name="MenuNodesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="NodeDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NodeControlName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NodeHierarchy" Type="Int32" Nullable="false" />
+    <Property Name="SubMenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccessibleViaApp" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MenuOption" Relationship="SMARTPayModel.FK_MenuOptionNodes_MenuOptions" FromRole="MenuOptionNode" ToRole="MenuOption" />
+  </EntityType>
+  <EntityType Name="MenuOption">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ControlName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MenuHierarchy" Type="Int32" Nullable="false" />
+    <Property Name="ShowMenuItemInApp" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MenuOptionNodes" Relationship="SMARTPayModel.FK_MenuOptionNodes_MenuOptions" FromRole="MenuOption" ToRole="MenuOptionNode" />
+  </EntityType>
+  <EntityType Name="SystemSecurityConfiguration">
+    <Key>
+      <PropertyRef Name="SystemSecurityConfigurationId" />
+    </Key>
+    <Property Name="SystemSecurityConfigurationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnableAutoLogOut" Type="Boolean" Nullable="false" />
+    <Property Name="AutoLogOutMinutes" Type="Int32" Nullable="false" />
+    <Property Name="AutoLockUserAccount" Type="Boolean" Nullable="false" />
+    <Property Name="NoOfUnsuccessfulAttempts" Type="Int32" Nullable="false" />
+    <Property Name="ImposePasswordChange" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordValidityDays" Type="Int32" Nullable="false" />
+    <Property Name="AllowPasswordRepeat" Type="Boolean" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="SystemUserAccess">
+    <Key>
+      <PropertyRef Name="UserAccessId" />
+    </Key>
+    <Property Name="UserAccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SystemUserId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="MenuNodesId" Type="Int32" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SystemUserGroup">
+    <Key>
+      <PropertyRef Name="SystemUserGroupId" />
+    </Key>
+    <Property Name="SystemUserGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccessHierachyId" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ApproveSessionTransactions" Type="Boolean" Nullable="false" />
+    <Property Name="ModifyEmployeeContract" Type="Boolean" Nullable="false" />
+    <Property Name="DeleteUnapproveTransactions" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModidifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AccessHierachy" Relationship="SMARTPayModel.FK_SystemUserGroup_AccessHierachy" FromRole="SystemUserGroup" ToRole="AccessHierachy" />
+    <NavigationProperty Name="SystemUserGroupAccesses" Relationship="SMARTPayModel.FK_SystemUserGroupAccess_SystemUserGroup" FromRole="SystemUserGroup" ToRole="SystemUserGroupAccess" />
+  </EntityType>
+  <EntityType Name="SystemUserGroupAccess">
+    <Key>
+      <PropertyRef Name="UserGroupAccessId" />
+    </Key>
+    <Property Name="UserGroupAccessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SystemUserGroupId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="MenuNodesId" Type="Int32" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SystemUserGroup" Relationship="SMARTPayModel.FK_SystemUserGroupAccess_SystemUserGroup" FromRole="SystemUserGroupAccess" ToRole="SystemUserGroup" />
+  </EntityType>
+  <EntityType Name="SystemUserPasswordHistory">
+    <Key>
+      <PropertyRef Name="SystemUserPasswordHistoryId" />
+    </Key>
+    <Property Name="SystemUserPasswordHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SystemUserId" Type="Int32" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SystemUser" Relationship="SMARTPayModel.FK_SystemUserPasswordHistory_SystemUsers" FromRole="SystemUserPasswordHistory" ToRole="SystemUser" />
+  </EntityType>
+  <EntityType Name="SystemUser">
+    <Key>
+      <PropertyRef Name="SystemUserId" />
+    </Key>
+    <Property Name="SystemUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AccountExpirable" Type="Boolean" Nullable="false" />
+    <Property Name="ActivePeriod" Type="Int32" />
+    <Property Name="RequireUserChange" Type="Boolean" Nullable="false" />
+    <Property Name="ExpirableValidationDate" Type="DateTime" Precision="3" />
+    <Property Name="CurrentlyLoggedIn" Type="Boolean" />
+    <Property Name="LastPasswordChange" Type="DateTime" Precision="3" />
+    <Property Name="SystemUserGroupId" Type="Int32" Nullable="false" />
+    <Property Name="AccountLocked" Type="Boolean" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SystemUserPasswordHistories" Relationship="SMARTPayModel.FK_SystemUserPasswordHistory_SystemUsers" FromRole="SystemUser" ToRole="SystemUserPasswordHistory" />
+  </EntityType>
+  <EntityType Name="SystemUserSetting">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MdiParentImage" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SystemMenuView">
+    <Key>
+      <PropertyRef Name="MenuNodesId" />
+      <PropertyRef Name="MenuId" />
+      <PropertyRef Name="NodeDescription" />
+      <PropertyRef Name="NodeControlName" />
+      <PropertyRef Name="MenuDescription" />
+      <PropertyRef Name="MenuControlName" />
+      <PropertyRef Name="NodeHierarchy" />
+      <PropertyRef Name="SubMenuName" />
+      <PropertyRef Name="AccessibleViaApp" />
+      <PropertyRef Name="MenuHierarchy" />
+      <PropertyRef Name="ShowMenuItemInApp" />
+    </Key>
+    <Property Name="MenuNodesId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="NodeDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NodeControlName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MenuDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MenuControlName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NodeHierarchy" Type="Int32" Nullable="false" />
+    <Property Name="SubMenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccessibleViaApp" Type="Boolean" Nullable="false" />
+    <Property Name="MenuHierarchy" Type="Int32" Nullable="false" />
+    <Property Name="ShowMenuItemInApp" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysUserAuditView">
+    <Key>
+      <PropertyRef Name="SystemUserId" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="LogInTime" />
+    </Key>
+    <Property Name="SystemUserId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LogInTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LogOutTime" Type="DateTime" Precision="3" />
+    <Property Name="TotalMinutesSpent" Type="Int32" />
+    <Property Name="Days" Type="Int32" />
+    <Property Name="Hours" Type="Int32" />
+    <Property Name="Minutes" Type="Int32" />
+    <Property Name="TotalTimeSpent" Type="String" MaxLength="116" FixedLength="false" Unicode="false" />
+    <Property Name="ConvertedTimeIn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_SystemUserGroup_AccessHierachy">
+    <End Type="SMARTPayModel.AccessHierachy" Role="AccessHierachy" Multiplicity="1" />
+    <End Type="SMARTPayModel.SystemUserGroup" Role="SystemUserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessHierachy">
+        <PropertyRef Name="AccessHierachyId" />
+      </Principal>
+      <Dependent Role="SystemUserGroup">
+        <PropertyRef Name="AccessHierachyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuOptionNodes_MenuOptions">
+    <End Type="SMARTPayModel.MenuOption" Role="MenuOption" Multiplicity="1" />
+    <End Type="SMARTPayModel.MenuOptionNode" Role="MenuOptionNode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuOption">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="MenuOptionNode">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemUserGroupAccess_SystemUserGroup">
+    <End Type="SMARTPayModel.SystemUserGroup" Role="SystemUserGroup" Multiplicity="1" />
+    <End Type="SMARTPayModel.SystemUserGroupAccess" Role="SystemUserGroupAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUserGroup">
+        <PropertyRef Name="SystemUserGroupId" />
+      </Principal>
+      <Dependent Role="SystemUserGroupAccess">
+        <PropertyRef Name="SystemUserGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemUserPasswordHistory_SystemUsers">
+    <End Type="SMARTPayModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+    <End Type="SMARTPayModel.SystemUserPasswordHistory" Role="SystemUserPasswordHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="SystemUserId" />
+      </Principal>
+      <Dependent Role="SystemUserPasswordHistory">
+        <PropertyRef Name="SystemUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TalentManager_CompanyView">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="CompanyName" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="GLFormat" />
+    </Key>
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GLFormat" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_ProductionView">
+    <Key>
+      <PropertyRef Name="ProductionLineId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="CostCentre" />
+      <PropertyRef Name="SessionDurationInHours" />
+      <PropertyRef Name="OvertimeApplies" />
+      <PropertyRef Name="OvertimeCalculationStartHour" />
+      <PropertyRef Name="Active" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="DepartmentDescription" />
+      <PropertyRef Name="CompanyName" />
+      <PropertyRef Name="CompanyDescription" />
+    </Key>
+    <Property Name="ProductionLineId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CostCentre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SessionDurationInHours" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="OvertimeApplies" Type="Boolean" Nullable="false" />
+    <Property Name="OvertimeCalculationStartHour" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="DepartmentDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_Task">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplyOvertime" Type="Boolean" Nullable="false" />
+    <Property Name="DutyId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="WageTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TalentManager_TaskView">
+    <Key>
+      <PropertyRef Name="TaskId" />
+      <PropertyRef Name="DutyId" />
+      <PropertyRef Name="WageTypeId" />
+      <PropertyRef Name="Active" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="DutyCode" />
+      <PropertyRef Name="ShortDescription" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="WageTypeDescription" />
+      <PropertyRef Name="ApplyOvertime" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="CompanyName" />
+      <PropertyRef Name="CompanyDescription" />
+    </Key>
+    <Property Name="TaskId" Type="Int32" Nullable="false" />
+    <Property Name="DutyId" Type="Int32" Nullable="false" />
+    <Property Name="WageTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="DutyCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="WageTypeDescription" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ApplyOvertime" Type="Boolean" Nullable="false" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_EmployeeView">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="CompanyDescription" />
+      <PropertyRef Name="EmployeeRef" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeDescription" Type="String" MaxLength="135" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeRef" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_EmployeeContract">
+    <Key>
+      <PropertyRef Name="EmployeeContractId" />
+    </Key>
+    <Property Name="EmployeeContractId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="CompanyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DutyId" Type="Int32" Nullable="false" />
+    <Property Name="DutyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OvertimeApplicableToDuty" Type="Boolean" Nullable="false" />
+    <Property Name="ProductionLineId" Type="Int32" Nullable="false" />
+    <Property Name="ProductionLineDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SessionDurationInHours" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="OvertimeAppliesToProduction" Type="Boolean" Nullable="false" />
+    <Property Name="OvertimeCalculationStartHour" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="ContractCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ContractStartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ContractEndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WageTypeDescription" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="RateOfPay" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TaskId" Type="Int32" Nullable="false" />
+    <Property Name="IsActiveContract" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CostCentre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_ContractedEmployeeView">
+    <Key>
+      <PropertyRef Name="EmployeeContractId" />
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="TaskId" />
+      <PropertyRef Name="ContractCode" />
+      <PropertyRef Name="ContractStartDate" />
+      <PropertyRef Name="ContractEndDate" />
+      <PropertyRef Name="RateOfPay" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="MiddleName" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="EmployeeRef" />
+      <PropertyRef Name="WageTypeDescription" />
+      <PropertyRef Name="SessionDurationInHours" />
+      <PropertyRef Name="ProductionLineId" />
+      <PropertyRef Name="ProductionLineDescription" />
+      <PropertyRef Name="DutyId" />
+      <PropertyRef Name="DutyDescription" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="OvertimeApplicableToDuty" />
+      <PropertyRef Name="OvertimeCalculationStartHour" />
+      <PropertyRef Name="IsActiveContract" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="CompanyDescription" />
+      <PropertyRef Name="OvertimeAppliesToProduction" />
+      <PropertyRef Name="DepartmentName" />
+      <PropertyRef Name="DayRate" />
+      <PropertyRef Name="CostCentre" />
+    </Key>
+    <Property Name="EmployeeContractId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="TaskId" Type="Int32" Nullable="false" />
+    <Property Name="ContractCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ContractStartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ContractEndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RateOfPay" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EmployeeRef" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="EmployeeDescription" Type="String" MaxLength="135" FixedLength="false" Unicode="false" />
+    <Property Name="WageTypeDescription" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SessionDurationInHours" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="ProductionLineId" Type="Int32" Nullable="false" />
+    <Property Name="ProductionLineDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DutyId" Type="Int32" Nullable="false" />
+    <Property Name="DutyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" />
+    <Property Name="OvertimeApplicableToDuty" Type="Boolean" Nullable="false" />
+    <Property Name="OvertimeCalculationStartHour" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="IsActiveContract" Type="Boolean" Nullable="false" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="CompanyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OvertimeAppliesToProduction" Type="Boolean" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DayRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CostCentre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_PaymentType">
+    <Key>
+      <PropertyRef Name="PaymentTypeId" />
+    </Key>
+    <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PayAtFlatRate" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_EmployeeJobView">
+    <Key>
+      <PropertyRef Name="EmployeeJobId" />
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="JobDate" />
+      <PropertyRef Name="StartTime" />
+      <PropertyRef Name="EndTime" />
+      <PropertyRef Name="DutyId" />
+      <PropertyRef Name="DutyDescription" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="DepartmentName" />
+      <PropertyRef Name="ProductionLineDescription" />
+      <PropertyRef Name="SessionDurationInHours" />
+      <PropertyRef Name="WageRate" />
+      <PropertyRef Name="WageTypeDescription" />
+      <PropertyRef Name="EmployeeContractId" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="IsExported" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="EmployeeRef" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="MiddleName" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="ProductionLineId" />
+      <PropertyRef Name="Notes" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="CompanyName" />
+      <PropertyRef Name="DailyWageRate" />
+      <PropertyRef Name="PaymentType" />
+      <PropertyRef Name="ActualHoursWorked" />
+      <PropertyRef Name="CostCentre" />
+      <PropertyRef Name="TaskPaymentAmount" />
+      <PropertyRef Name="OvertimePaymentAmount" />
+      <PropertyRef Name="TaskId" />
+      <PropertyRef Name="EmployeeJobDetailId" />
+      <PropertyRef Name="IsVoided" />
+    </Key>
+    <Property Name="EmployeeJobId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="JobDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DutyId" Type="Int32" Nullable="false" />
+    <Property Name="DutyDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionLineDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SessionDurationInHours" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="WageRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="WageTypeDescription" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="UserDecidedPaymentAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PaymentAmountDecidedByUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeContractId" Type="Int32" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateApproved" Type="DateTime" Precision="3" />
+    <Property Name="IsExported" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeeRef" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EmployeeDescription" Type="String" MaxLength="135" FixedLength="false" Unicode="false" />
+    <Property Name="ProductionLineId" Type="Int32" Nullable="false" />
+    <Property Name="Notes" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DailyWageRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PaymentType" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ActualHoursWorked" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="CostCentre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TaskPaymentAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="OvertimePaymentAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="EmployeeFullName" Type="String" MaxLength="121" FixedLength="false" Unicode="false" />
+    <Property Name="TaskId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeJobDetailId" Type="Int32" Nullable="false" />
+    <Property Name="IsVoided" Type="Boolean" Nullable="false" />
+    <Property Name="VoidReason" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DateVoided" Type="DateTime" Precision="3" />
+    <Property Name="VoidedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TalentManager_EmployeeDayRate">
+    <Key>
+      <PropertyRef Name="EmployeeDayRateId" />
+    </Key>
+    <Property Name="EmployeeDayRateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="DayRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="TalentManager_EmployeeJob">
+    <Key>
+      <PropertyRef Name="EmployeeJobId" />
+    </Key>
+    <Property Name="EmployeeJobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="JobDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentId" Type="Int16" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DailyWageRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PaymentType" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TalentManager_EmployeeJobDetail" Relationship="SMARTPayModel.FK_TalentManager_EmployeeJobDetail_TalentManager_EmployeeJob" FromRole="TalentManager_EmployeeJob" ToRole="TalentManager_EmployeeJobDetail" />
+  </EntityType>
+  <EntityType Name="TalentManager_EmployeeJobDetail">
+    <Key>
+      <PropertyRef Name="EmployeeJobDetailId" />
+    </Key>
+    <Property Name="EmployeeJobDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeJobId" Type="Int32" Nullable="false" />
+    <Property Name="DutyId" Type="Int32" Nullable="false" />
+    <Property Name="DutyDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductionLineId" Type="Int32" Nullable="false" />
+    <Property Name="ProductionLineDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SessionDurationInHours" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="CostCentre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ActualHoursWorked" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="WageRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="WageTypeDescription" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TaskPaymentAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="OvertimePaymentAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="EmployeeContractId" Type="Int32" Nullable="false" />
+    <Property Name="UserDecidedPaymentAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PaymentAmountDecidedByUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateApproved" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsVoided" Type="Boolean" Nullable="false" />
+    <Property Name="VoidedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateVoided" Type="DateTime" Precision="3" />
+    <Property Name="VoidReason" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsExported" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TalentManager_EmployeeJob" Relationship="SMARTPayModel.FK_TalentManager_EmployeeJobDetail_TalentManager_EmployeeJob" FromRole="TalentManager_EmployeeJobDetail" ToRole="TalentManager_EmployeeJob" />
+  </EntityType>
+  <Association Name="FK_TalentManager_EmployeeJobDetail_TalentManager_EmployeeJob">
+    <End Type="SMARTPayModel.TalentManager_EmployeeJob" Role="TalentManager_EmployeeJob" Multiplicity="1" />
+    <End Type="SMARTPayModel.TalentManager_EmployeeJobDetail" Role="TalentManager_EmployeeJobDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TalentManager_EmployeeJob">
+        <PropertyRef Name="EmployeeJobId" />
+      </Principal>
+      <Dependent Role="TalentManager_EmployeeJobDetail">
+        <PropertyRef Name="EmployeeJobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TalentManager_ExportedEmployeeJob">
+    <Key>
+      <PropertyRef Name="ExportedEmployeeJobId" />
+    </Key>
+    <Property Name="ExportedEmployeeJobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int16" Nullable="false" />
+    <Property Name="PayrollPeriod" Type="Int32" Nullable="false" />
+    <Property Name="PayrollYear" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeCount" Type="Int32" Nullable="false" />
+    <Property Name="PayrollAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TalentManager_ExportedEmployeeJobDetails" Relationship="SMARTPayModel.FK_TalentManager_ExportedEmployeeJobDetails_TalentManager_ExportedEmployeeJob" FromRole="TalentManager_ExportedEmployeeJob" ToRole="TalentManager_ExportedEmployeeJobDetails" />
+  </EntityType>
+  <EntityType Name="TalentManager_ExportedEmployeeJobDetails">
+    <Key>
+      <PropertyRef Name="ExportedEmployeeJobDetailId" />
+    </Key>
+    <Property Name="ExportedEmployeeJobDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExportedEmployeeJobId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeJobDetailId" Type="Int32" Nullable="false" />
+    <Property Name="AmountPaid" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="TalentManager_ExportedEmployeeJob" Relationship="SMARTPayModel.FK_TalentManager_ExportedEmployeeJobDetails_TalentManager_ExportedEmployeeJob" FromRole="TalentManager_ExportedEmployeeJobDetails" ToRole="TalentManager_ExportedEmployeeJob" />
+  </EntityType>
+  <Association Name="FK_TalentManager_ExportedEmployeeJobDetails_TalentManager_ExportedEmployeeJob">
+    <End Type="SMARTPayModel.TalentManager_ExportedEmployeeJob" Role="TalentManager_ExportedEmployeeJob" Multiplicity="1" />
+    <End Type="SMARTPayModel.TalentManager_ExportedEmployeeJobDetails" Role="TalentManager_ExportedEmployeeJobDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TalentManager_ExportedEmployeeJob">
+        <PropertyRef Name="ExportedEmployeeJobId" />
+      </Principal>
+      <Dependent Role="TalentManager_ExportedEmployeeJobDetails">
+        <PropertyRef Name="ExportedEmployeeJobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TalentManager_SystemNumberConfig">
+    <Key>
+      <PropertyRef Name="SystemNumberConfigId" />
+    </Key>
+    <Property Name="SystemNumberConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ObjectType" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="ObjectMask" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="NextSystemNumber" Type="Int32" Nullable="false" />
+    <Property Name="UsePadding" Type="Boolean" Nullable="false" />
+    <Property Name="PaddingAmount" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>
